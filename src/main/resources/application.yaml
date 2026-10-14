@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: rate-limiter
+
+
+resilience4j:
+  ratelimiter:
+    instances:
+      apiLimiter:
+        limitForPeriod: 5
+        limitRefreshPeriod: 60s
+        timeoutDuration: 0
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 100
