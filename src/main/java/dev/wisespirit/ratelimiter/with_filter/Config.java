@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
     @Bean
-    public FilterRegistrationBean<RateLimitFilter> rateLimitFilter(RateLimitFilter rateLimitFilter) {
+    public FilterRegistrationBean<RateLimitFilter> rateLimitFilterRegister(RateLimitFilter rateLimitFilter) {
         FilterRegistrationBean<RateLimitFilter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(rateLimitFilter);
         registrationBean.addUrlPatterns("/api/test/rate-limit");

@@ -6,7 +6,7 @@ spring:
 resilience4j:
   ratelimiter:
     instances:
-      apiLimiter:
+      testRateLimiter:
         limitForPeriod: 5
         limitRefreshPeriod: 60s
         timeoutDuration: 0

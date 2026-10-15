@@ -1,5 +1,6 @@
 package dev.wisespirit.ratelimiter.with_esilience4j;
 
+import io.github.resilience4j.ratelimiter.RequestNotPermitted;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/api/test1")
 public class TestConntroller {
 
     @GetMapping("/rate-limit")
@@ -16,7 +17,7 @@ public class TestConntroller {
         return ResponseEntity.ok("Success!");
     }
 
-    public ResponseEntity<String> rateLimitFallback(Exception e) {
+    public ResponseEntity<String> rateLimitFallback(RequestNotPermitted e) {
         return ResponseEntity.status(429)
                 .body("Too many requests. Please try again later.");
     }

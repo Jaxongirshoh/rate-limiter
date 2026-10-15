@@ -2,6 +2,7 @@ package dev.wisespirit.ratelimiter.with_filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.jspecify.annotations.NonNull;
@@ -31,6 +32,7 @@ public class RateLimitFilter extends OncePerRequestFilter {
         if (requestCounts.get(remoteAddr).get() > MAX_REQUESTS) {
             response.setStatus(429);
             response.getWriter().write("Too many request. Try sometime later.");
+            return;
         }
 
         filterChain.doFilter(request, response);
